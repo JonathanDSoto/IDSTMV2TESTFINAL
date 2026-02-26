@@ -23,15 +23,17 @@ public class Ventana extends JFrame{
 		this.setVisible(true);
 		this.setSize(1200, 600);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//this.setLocationRelativeTo(null);
+		this.setLocationRelativeTo(null);
 		this.setMinimumSize(new Dimension(200,200));
 		this.setMaximumSize(new Dimension(1200,800));
-		this.setTitle("Hola");
-		//this.setBackground(Color.BLACK); 
-		this.setLocation(200, 200);
+		this.setTitle("Hola"); 
 		this.setLayout(null);
 		
-		
+		this.registro();
+	}
+	
+	public void login()
+	{
 		//contenedor de login
 		JPanel contenedor = new JPanel();
 		contenedor.setOpaque(true);
@@ -66,7 +68,10 @@ public class Ventana extends JFrame{
 		
 		contenedor.repaint();
 		contenedor.revalidate();
-		
+	}
+	
+	public void registro()
+	{
 		//contenedor para el registro
 		
 		JPanel register_container = new JPanel();
@@ -126,7 +131,10 @@ public class Ventana extends JFrame{
 		
 		register_container.repaint();
 	}
-
+	
+	public void users() {
+		
+	}
 }
 
 
