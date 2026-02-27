@@ -11,6 +11,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -31,6 +32,10 @@ public class Ventana extends JFrame{
 		this.setTitle("Hola"); 
 		this.getContentPane().setBackground(Color.decode("#C8DEBD"));
 		this.setLayout(null);
+		
+		JMenuBar barra = new JMenuBar();
+		
+		this.setJMenuBar(barra);
 		
 		this.users();
 	}
