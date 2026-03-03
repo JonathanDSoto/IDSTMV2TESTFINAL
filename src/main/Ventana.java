@@ -1,8 +1,12 @@
 package main;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.ComponentOrientation;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -64,7 +68,7 @@ public class Ventana extends JFrame{
 		
 		this.setJMenuBar(barra);
 		
-		//this.users();
+		this.test();
 		
 		this.setVisible(true);
 	}
@@ -225,7 +229,71 @@ public class Ventana extends JFrame{
 		users.add(scrollPane);
 	}
 	
-	
+	public void test()
+	{
+		JPanel test_panel = new JPanel();
+		test_panel.setSize(1000, 500);
+		test_panel.setLocation(100, 50);
+		test_panel.setBackground(Color.white);
+		test_panel.setLayout(new BorderLayout(100,100));
+		this.add(test_panel);
+		
+		
+		
+		JLabel users_title = new JLabel("USUARIOS"); 
+		users_title.setFont(new Font("Arial",Font.BOLD,22));
+		users_title.setBackground(Color.decode("#F27A61"));
+		test_panel.add(users_title,BorderLayout.NORTH);
+		
+		JLabel users_title2 = new JLabel("USUARIOS"); 
+		users_title2.setFont(new Font("Arial",Font.BOLD,22));
+		users_title2.setBackground(Color.decode("#F27A61"));
+		test_panel.add(users_title2,BorderLayout.LINE_START);
+		
+		JLabel users_title3 = new JLabel("USUARIOS"); 
+		users_title3.setFont(new Font("Arial",Font.BOLD,22));
+		users_title3.setBackground(Color.decode("#F27A61"));
+		test_panel.add(users_title3,BorderLayout.LINE_END);
+		
+		
+		JPanel center_panel = new JPanel(); 
+		center_panel.setBackground(Color.yellow);
+		center_panel.setLayout(new GridLayout(4,4));
+		
+		center_panel.add(new JButton("1"));
+		center_panel.add(new JButton("2"));
+		center_panel.add(new JButton("3"));
+		center_panel.add(new JButton("4"));
+		center_panel.add(new JButton("5"));
+		center_panel.add(new JButton("6"));
+		center_panel.add(new JButton("1"));
+		center_panel.add(new JLabel("2"));
+		center_panel.add(new JButton("3"));
+		center_panel.add(new JButton("4"));
+		center_panel.add(new JButton("5"));
+		center_panel.add(new JButton("6"));
+		center_panel.add(new JTextField("3"));
+		center_panel.add(new JButton("4"));
+		center_panel.add(new JButton("5"));
+		center_panel.add(new JButton("6"));
+		
+		test_panel.add(center_panel,BorderLayout.CENTER);
+		
+		
+		JPanel south_panel = new JPanel();  
+		south_panel.setBackground(Color.green);
+		south_panel.setLayout(new FlowLayout(5,10,10));
+		
+		south_panel.applyComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+		
+		south_panel.add(new JButton("1"));
+		south_panel.add(new JButton("2"));
+		south_panel.add(new JButton("3"));
+		south_panel.add(new JButton("4"));
+		south_panel.add(new JButton("5"));
+		
+		test_panel.add(south_panel,BorderLayout.SOUTH);
+	}
 }
 
 
