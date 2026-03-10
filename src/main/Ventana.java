@@ -29,7 +29,7 @@ public class Ventana extends JFrame{
 
 	public Ventana() {
 		
-		this.setSize(1200, 600);
+		this.setSize(1200, 700);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setMinimumSize(new Dimension(200,200));
@@ -68,7 +68,9 @@ public class Ventana extends JFrame{
 		
 		this.setJMenuBar(barra);
 		
-		this.test();
+		//this.test();
+		
+		this.calculadora_interes();
 		
 		this.setVisible(true);
 	}
@@ -293,6 +295,46 @@ public class Ventana extends JFrame{
 		south_panel.add(new JButton("5"));
 		
 		test_panel.add(south_panel,BorderLayout.SOUTH);
+	}
+	
+	public void calculadora_interes()
+	{
+		
+		JPanel test_panel = new JPanel();
+		test_panel.setSize(1000, 500);
+		test_panel.setLocation(100, 50);
+		test_panel.setBackground(Color.white);
+		test_panel.setLayout(new BorderLayout(150,10));
+		this.add(test_panel);
+		
+		JLabel title = new JLabel("INTERÉS"); 
+		title.setFont(new Font("Arial",Font.BOLD,22));
+		title.setForeground(Color.red);
+		title.setBorder(BorderFactory.createLineBorder(Color.white,10));
+		test_panel.add(title,BorderLayout.NORTH);
+		
+		JPanel center_panel = new JPanel(); 
+		center_panel.setBackground(Color.green);
+		GridLayout mi_layout = new GridLayout(4,2);
+		mi_layout.setVgap(50);
+		mi_layout.setHgap(50);
+		center_panel.setLayout(mi_layout); 
+		test_panel.add(center_panel,BorderLayout.CENTER);
+		
+		JLabel capital = new JLabel("Capital:"); 
+		center_panel.add(capital);  
+		
+		JTextField campo1 = new JTextField("1500"); 
+		center_panel.add(campo1);
+		
+		center_panel.add(new JLabel("Tiempo: "));
+		center_panel.add(new JTextField("2"));
+		
+		center_panel.add(new JLabel("Tiempo: "));
+		center_panel.add(new JTextField("2"));
+		
+		center_panel.add(new JButton("Calcular"));
+		center_panel.add(new JButton("Cancelar"));
 	}
 }
 
