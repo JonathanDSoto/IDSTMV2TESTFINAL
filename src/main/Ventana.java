@@ -1,13 +1,22 @@
 package main;
 
+import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -19,6 +28,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -68,9 +78,14 @@ public class Ventana extends JFrame{
 		
 		this.setJMenuBar(barra);
 		
-		//this.test();
+		this.login();
+		this.registro();
 		
-		this.calculadora_interes();
+		//this.test(); 
+		//this.calculadora_interes();
+		
+		/**/
+		
 		
 		this.setVisible(true);
 	}
@@ -80,7 +95,7 @@ public class Ventana extends JFrame{
 		//contenedor de login
 		JPanel contenedor = new JPanel();
 		contenedor.setOpaque(true);
-		contenedor.setBackground(Color.black);
+		contenedor.setBackground(Color.gray);
 		contenedor.setSize(500, 500);
 		contenedor.setLocation(50, 50);
 		contenedor.setLayout(null);
@@ -96,11 +111,27 @@ public class Ventana extends JFrame{
 		title_login.setHorizontalAlignment(JLabel.CENTER);
 		contenedor.add(title_login);
 		
+		JLabel user_tag = new JLabel("Correo electrónico");
+		user_tag.setBounds(40, 120, 300, 30);
+		user_tag.setFont(new Font("Arial",Font.BOLD,17));
+		contenedor.add(user_tag);
+		
 		JTextField username = new JTextField();
 		username.setSize(300,30);
 		username.setLocation(30, 150);
 		username.setFont(new Font("Arial",Font.BOLD,22));
 		contenedor.add(username);
+		
+		JLabel password_tag = new JLabel("Contraseña");
+		password_tag.setBounds(40, 200, 300, 30);
+		password_tag.setFont(new Font("Arial",Font.BOLD,17));
+		contenedor.add(password_tag);
+		
+		JPasswordField password = new JPasswordField();
+		password.setSize(300,30);
+		password.setLocation(30, 230);
+		password.setFont(new Font("Arial",Font.BOLD,22));
+		contenedor.add(password);
 		
 		JButton acceder = new JButton();
 		acceder.setText("Acceder");
@@ -108,6 +139,22 @@ public class Ventana extends JFrame{
 		acceder.setSize(120, 50);
 		acceder.setFont(new Font("Arial",Font.BOLD,22));
 		contenedor.add(acceder);
+		
+		acceder.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				String username_val = username.getText();
+				
+				if(username_val.equals("")) {  
+					username.setBorder(BorderFactory.createLineBorder(Color.red,3,true));
+				}else {
+					username.setBorder(BorderFactory.createLineBorder(Color.green,3,true));
+				}  
+				
+			}
+		});
 		
 		contenedor.repaint();
 		contenedor.revalidate();
@@ -335,6 +382,61 @@ public class Ventana extends JFrame{
 		
 		center_panel.add(new JButton("Calcular"));
 		center_panel.add(new JButton("Cancelar"));
+	}
+	
+	public void pintar()
+	{
+		JPanel pane = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g); 
+                
+                Graphics2D g2d = (Graphics2D) g;
+                
+                g2d.drawLine(0, 0, 100, 100);
+                 
+                g2d.setColor(Color.red);
+                g2d.setStroke(new BasicStroke(3));
+                
+                g2d.drawLine(200, 200, 500, 200);
+                
+                g2d.drawRect(250, 250, 100, 100);
+                
+                g2d.setColor(Color.green);
+                
+                g2d.drawOval(400,100,90,30);
+                
+                g2d.setStroke(new BasicStroke(5));
+                
+                g2d.drawArc(300, 100, 100, 100, 90, 90);
+                
+                g2d.drawPolygon(new int[] {200,100,300},new int[] {100,300,500},3);
+                
+                g2d.setColor(Color.orange);
+            
+                g2d.fillRect(500, 300, 100, 100);
+                
+                g2d.fillOval(400, 200, 100, 100);
+                
+                g2d.fillArc(300, 300, 100, 100, 0, 300);
+                
+                g2d.fillPolygon(new int[] {400,300,500},new int[] {200,300,500},3);
+                
+                try {
+					BufferedImage image = ImageIO.read(new File("src/img/8152506.png"));
+				
+					g2d.drawImage(image, 500, 9, null);
+					
+                } catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+            }
+        };
+		
+        pane.setSize(1200,700);
+        pane.setLocation(0, 0);
+        this.add(pane);
 	}
 }
 
