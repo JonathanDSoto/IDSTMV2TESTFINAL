@@ -79,7 +79,7 @@ public class Ventana extends JFrame{
 		this.setJMenuBar(barra);
 		
 		this.login();
-		this.registro();
+		//this.registro();
 		
 		//this.test(); 
 		//this.calculadora_interes();
@@ -94,10 +94,10 @@ public class Ventana extends JFrame{
 	{
 		//contenedor de login
 		JPanel contenedor = new JPanel();
-		contenedor.setOpaque(true);
+		//contenedor.setOpaque(true);
 		contenedor.setBackground(Color.gray);
-		contenedor.setSize(500, 500);
-		contenedor.setLocation(50, 50);
+		contenedor.setSize(1160, 610);
+		contenedor.setLocation(20, 20);
 		contenedor.setLayout(null);
 		this.add(contenedor);
 		
@@ -155,6 +155,19 @@ public class Ventana extends JFrame{
 				
 			}
 		});
+		
+		
+		JButton registro = new JButton("¿Aún no tienes cuenta?"); 
+		registro.setLocation(100, 460);
+		registro.setSize(200, 50);
+		registro.setFont(new Font("Arial",Font.BOLD,22));
+		contenedor.add(registro);
+		
+		registro.addActionListener(e -> {
+			System.out.println("Hola");
+			System.out.println(e);
+		});
+		
 		
 		contenedor.repaint();
 		contenedor.revalidate();
