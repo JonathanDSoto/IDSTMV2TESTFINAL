@@ -36,7 +36,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class Ventana extends JFrame{
-
+	
 	public Ventana() {
 		
 		this.setSize(1200, 700);
@@ -78,13 +78,8 @@ public class Ventana extends JFrame{
 		
 		this.setJMenuBar(barra);
 		
+		//this.router("registro");
 		this.login();
-		//this.registro();
-		
-		//this.test(); 
-		//this.calculadora_interes();
-		
-		/**/
 		
 		
 		this.setVisible(true);
@@ -164,8 +159,8 @@ public class Ventana extends JFrame{
 		contenedor.add(registro);
 		
 		registro.addActionListener(e -> {
-			System.out.println("Hola");
-			System.out.println(e);
+			
+			this.router("registro");
 		});
 		
 		
@@ -178,8 +173,8 @@ public class Ventana extends JFrame{
 		//contenedor para el registro
 		
 		JPanel register_container = new JPanel();
-		register_container.setSize(500, 500);
-		register_container.setLocation(650,50);
+		register_container.setSize(500, 600);
+		register_container.setLocation(650,30);
 		register_container.setOpaque(true);
 		register_container.setBackground(Color.decode("#66B0A8"));
 		register_container.setLayout(null);
@@ -231,6 +226,16 @@ public class Ventana extends JFrame{
 		list.setBounds(50, 50, 200, 60);
 		register_container.add(list);
 		
+		JButton cancelar = new JButton("Cancelar");
+		cancelar.setLocation(100, 460);
+		cancelar.setSize(200, 50);
+		cancelar.setFont(new Font("Arial",Font.BOLD,22));
+		register_container.add(cancelar);
+		
+		cancelar.addActionListener(e -> {
+			
+			this.router("login");
+		});
 		
 		register_container.repaint();
 	}
@@ -291,165 +296,22 @@ public class Ventana extends JFrame{
 		users.add(scrollPane);
 	}
 	
-	public void test()
-	{
-		JPanel test_panel = new JPanel();
-		test_panel.setSize(1000, 500);
-		test_panel.setLocation(100, 50);
-		test_panel.setBackground(Color.white);
-		test_panel.setLayout(new BorderLayout(100,100));
-		this.add(test_panel);
-		
-		
-		
-		JLabel users_title = new JLabel("USUARIOS"); 
-		users_title.setFont(new Font("Arial",Font.BOLD,22));
-		users_title.setBackground(Color.decode("#F27A61"));
-		test_panel.add(users_title,BorderLayout.NORTH);
-		
-		JLabel users_title2 = new JLabel("USUARIOS"); 
-		users_title2.setFont(new Font("Arial",Font.BOLD,22));
-		users_title2.setBackground(Color.decode("#F27A61"));
-		test_panel.add(users_title2,BorderLayout.LINE_START);
-		
-		JLabel users_title3 = new JLabel("USUARIOS"); 
-		users_title3.setFont(new Font("Arial",Font.BOLD,22));
-		users_title3.setBackground(Color.decode("#F27A61"));
-		test_panel.add(users_title3,BorderLayout.LINE_END);
-		
-		
-		JPanel center_panel = new JPanel(); 
-		center_panel.setBackground(Color.yellow);
-		center_panel.setLayout(new GridLayout(4,4));
-		
-		center_panel.add(new JButton("1"));
-		center_panel.add(new JButton("2"));
-		center_panel.add(new JButton("3"));
-		center_panel.add(new JButton("4"));
-		center_panel.add(new JButton("5"));
-		center_panel.add(new JButton("6"));
-		center_panel.add(new JButton("1"));
-		center_panel.add(new JLabel("2"));
-		center_panel.add(new JButton("3"));
-		center_panel.add(new JButton("4"));
-		center_panel.add(new JButton("5"));
-		center_panel.add(new JButton("6"));
-		center_panel.add(new JTextField("3"));
-		center_panel.add(new JButton("4"));
-		center_panel.add(new JButton("5"));
-		center_panel.add(new JButton("6"));
-		
-		test_panel.add(center_panel,BorderLayout.CENTER);
-		
-		
-		JPanel south_panel = new JPanel();  
-		south_panel.setBackground(Color.green);
-		south_panel.setLayout(new FlowLayout(5,10,10));
-		
-		south_panel.applyComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-		
-		south_panel.add(new JButton("1"));
-		south_panel.add(new JButton("2"));
-		south_panel.add(new JButton("3"));
-		south_panel.add(new JButton("4"));
-		south_panel.add(new JButton("5"));
-		
-		test_panel.add(south_panel,BorderLayout.SOUTH);
-	}
-	
-	public void calculadora_interes()
+	public void router(String target)
 	{
 		
-		JPanel test_panel = new JPanel();
-		test_panel.setSize(1000, 500);
-		test_panel.setLocation(100, 50);
-		test_panel.setBackground(Color.white);
-		test_panel.setLayout(new BorderLayout(150,10));
-		this.add(test_panel);
+		this.getContentPane().removeAll();
 		
-		JLabel title = new JLabel("INTERÉS"); 
-		title.setFont(new Font("Arial",Font.BOLD,22));
-		title.setForeground(Color.red);
-		title.setBorder(BorderFactory.createLineBorder(Color.white,10));
-		test_panel.add(title,BorderLayout.NORTH);
+		if(target.equals("login"))  
+			this.login();
+			
 		
-		JPanel center_panel = new JPanel(); 
-		center_panel.setBackground(Color.green);
-		GridLayout mi_layout = new GridLayout(4,2);
-		mi_layout.setVgap(50);
-		mi_layout.setHgap(50);
-		center_panel.setLayout(mi_layout); 
-		test_panel.add(center_panel,BorderLayout.CENTER);
+		if(target.equals("registro"))  
+			this.registro();
 		
-		JLabel capital = new JLabel("Capital:"); 
-		center_panel.add(capital);  
+		this.setVisible(true);
+		this.repaint();
+		this.revalidate();
 		
-		JTextField campo1 = new JTextField("1500"); 
-		center_panel.add(campo1);
-		
-		center_panel.add(new JLabel("Tiempo: "));
-		center_panel.add(new JTextField("2"));
-		
-		center_panel.add(new JLabel("Tiempo: "));
-		center_panel.add(new JTextField("2"));
-		
-		center_panel.add(new JButton("Calcular"));
-		center_panel.add(new JButton("Cancelar"));
-	}
-	
-	public void pintar()
-	{
-		JPanel pane = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g); 
-                
-                Graphics2D g2d = (Graphics2D) g;
-                
-                g2d.drawLine(0, 0, 100, 100);
-                 
-                g2d.setColor(Color.red);
-                g2d.setStroke(new BasicStroke(3));
-                
-                g2d.drawLine(200, 200, 500, 200);
-                
-                g2d.drawRect(250, 250, 100, 100);
-                
-                g2d.setColor(Color.green);
-                
-                g2d.drawOval(400,100,90,30);
-                
-                g2d.setStroke(new BasicStroke(5));
-                
-                g2d.drawArc(300, 100, 100, 100, 90, 90);
-                
-                g2d.drawPolygon(new int[] {200,100,300},new int[] {100,300,500},3);
-                
-                g2d.setColor(Color.orange);
-            
-                g2d.fillRect(500, 300, 100, 100);
-                
-                g2d.fillOval(400, 200, 100, 100);
-                
-                g2d.fillArc(300, 300, 100, 100, 0, 300);
-                
-                g2d.fillPolygon(new int[] {400,300,500},new int[] {200,300,500},3);
-                
-                try {
-					BufferedImage image = ImageIO.read(new File("src/img/8152506.png"));
-				
-					g2d.drawImage(image, 500, 9, null);
-					
-                } catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-            }
-        };
-		
-        pane.setSize(1200,700);
-        pane.setLocation(0, 0);
-        this.add(pane);
 	}
 }
 
