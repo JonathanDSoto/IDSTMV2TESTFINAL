@@ -78,9 +78,7 @@ public class Ventana extends JFrame{
 		
 		this.setJMenuBar(barra);
 		
-		//this.router("registro");
-		this.login();
-		
+		this.router("registro");
 		
 		this.setVisible(true);
 	}
