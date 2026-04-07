@@ -222,7 +222,7 @@ public class Ventana extends JFrame{
 		lblNewLabel.setHorizontalAlignment(JLabel.CENTER);
 		panel.add(lblNewLabel);
 		
-		JLabel lblNewLabel_8 = new JLabel("");
+		JLabel lblNewLabel_8 = new JLabel(""); 
 		lblNewLabel_8.setBounds(36, 186, 353, 81);
 		lblNewLabel_8.setBorder(BorderFactory.createTitledBorder("Correo electrónico"));
 		panel.add(lblNewLabel_8);
