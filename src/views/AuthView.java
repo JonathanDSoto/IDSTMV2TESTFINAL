@@ -24,10 +24,18 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
+import controllers.HomeController;
+import models.AuthModel;
+
 public class AuthView {
 
+	private AuthModel model;
+	private HomeController hc;
+	
 	public AuthView() {
 		
+		model = new AuthModel();
+		hc = new HomeController();
 	}
 	
 	public void loginView()
@@ -107,19 +115,19 @@ public class AuthView {
 					flag2 = true;
 				}
 				
-				if(flag1 && flag2) {
+				if(flag1 && flag2) { 
 					
-					if(textField.getText().equals("fake@mail.com") ) {
-						if(passText.equals("12345")) {
-							
-							JOptionPane.showMessageDialog(null, "Bienvenido.");
-							
-						}else {
-							JOptionPane.showMessageDialog(null, "Error al acceder","verifique su información",JOptionPane.WARNING_MESSAGE);
-						}
+					 if(model.access(textField.getText(), passText) ) {
+						 JOptionPane.showMessageDialog(null, "Bienvenido.");
+						 
+						 ventana.dispose();
+						 hc.home();
+						 
+						 //dispose
+						 //HomeController
 					}else {
 						JOptionPane.showMessageDialog(null, "Error al acceder","verifique su información",JOptionPane.WARNING_MESSAGE);
-					}
+					} 
 					
 					
 				}
