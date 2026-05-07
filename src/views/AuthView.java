@@ -441,8 +441,11 @@ public class AuthView {
 	            valido = false;
 	        }
 
-	        if (valido) {
-	            String coloniaSeleccionada = (String) list.getSelectedItem();
+	        if ( valido && model.register(correo, password, nombre) ) {
+	        	
+	        	
+	        	
+	            /*String coloniaSeleccionada = (String) list.getSelectedItem();
 
 	            StringBuilder preferencias = new StringBuilder();
 	            if (sweetOption.isSelected()) preferencias.append("Dulce, ");
@@ -455,20 +458,29 @@ public class AuthView {
 	                preferencias.append("Ninguna");
 	            }
 
-	            JOptionPane.showMessageDialog(
-	                null,
-	                "Registro exitoso\n\n" +
-	                "Nombre: " + nombre + "\n" +
-	                "Correo: " + correo + "\n" +
-	                "Colonia: " + coloniaSeleccionada + "\n" +
-	                "Preferencias: " + preferencias,
-	                "Éxito",
-	                JOptionPane.INFORMATION_MESSAGE
-	            );
-
+	            
+				*/
+	        	JOptionPane.showMessageDialog(
+		                null,
+		                "Registro exitoso\n\n" +
+		                "Nombre: " + nombre + "\n" +
+		                "Correo: " + correo + "\n",
+		                "Éxito",
+		                JOptionPane.INFORMATION_MESSAGE
+		            );
+	        	
 	            //router("login");
 	            ventana.dispose();
 		    	loginView();
+	        }else {
+	        	
+	        	JOptionPane.showMessageDialog(
+	                null,
+	                "No se pudo crear la cuenta.",
+	                "Aviso",
+	                JOptionPane.WARNING_MESSAGE
+	            );
+	        	
 	        }
 	    });
 
