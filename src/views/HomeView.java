@@ -3,7 +3,10 @@ package views;
 import java.awt.Color;
 import java.awt.Dimension;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+
+import controllers.UsersController;
 
 public class HomeView {
 
@@ -23,7 +26,25 @@ public class HomeView {
 		ventana.getContentPane().setBackground(Color.decode("#C8DEBD"));
 		ventana.setLayout(null);
 		
+		JButton goToUsers = new JButton("Ir al panel de usuarios");
+		goToUsers.setBounds(100, 100, 200, 100);
+		goToUsers.addActionListener(e ->{
+			
+			UsersController uc = new UsersController();
+			uc.showUsers();
+			
+			ventana.dispose();
+			
+		});
+		ventana.add(goToUsers);
+		
 		ventana.setVisible(true);
 	}
 
 }
+
+
+
+
+
+
