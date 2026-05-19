@@ -22,6 +22,13 @@ public class UsersController {
 		
 		view.tableUsers(users);
 	}
+	
+	public boolean addUser(String e, String p, String n)
+	{
+		boolean flag = model.make(e, p, n);
+		
+		return flag;
+	}
 
 }
 
